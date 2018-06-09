@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PageNavigatorComponent implements OnInit {
 
+  heroes = ['Windstorm', 'Bombasto', 'Magneta', 'Tornado'];
+
   constructor() { }
 
   ngOnInit() {
