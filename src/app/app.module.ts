@@ -3,11 +3,13 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { PageNavigatorComponent } from './page-navigator/page-navigator.component';
+import { ItemsComponent } from './items/items.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PageNavigatorComponent
+    PageNavigatorComponent,
+    ItemsComponent
   ],
   imports: [
     BrowserModule
