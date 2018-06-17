@@ -7,9 +7,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ItemsComponent implements OnInit {
 
+  items = [];
+  itemsCount = 12;
+
   constructor() { }
 
-  ngOnInit() {
+  ngOnInit() {    
+    for(var i = 0; i < this.itemsCount; ++i) {
+       this.items.push(i);
+    }
   }
 
 }
