@@ -24,10 +24,16 @@
             ],
             "styles": [
               "src/styles.css",
-              "src/assets/css/bootstrap.min.css"
+              "src/assets/css/bootstrap.min.css",
+              "src/assets/css/jquery-ui.min.css",
+              "src/assets/css/jquery.ui.plupload.css"              
             ],
-            "scripts": [
-              
+            "scripts": [              
+              "src/assets/js/jquery.min.js",
+              "src/assets/js/jquery-ui.min.js",              
+              "src/assets/js/moxie.js",
+              "src/assets/js/plupload.dev.js",    
+              "src/assets/js/jquery.ui.plupload.js"
             ]
           },
           "configurations": {
