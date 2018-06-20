@@ -79,7 +79,7 @@ export class PageNavigatorComponent implements OnInit {
 
   }
 
-  goNext() {    
+  goNext() {
     if(this.pagesCount > this.currentPage)
     this.changePage(this.currentPage + 1)
   }
