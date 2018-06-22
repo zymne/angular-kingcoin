@@ -5,9 +5,22 @@
 
     <div class="row text-center text-lg-left">
 
-      <div *ngFor="let it of items" class="col-lg-3 col-md-4 col-xs-6">
+      <!-- <div *ngFor="let it of items" class="col-lg-3 col-md-4 col-xs-6">
         <a href="#" class="d-block mb-4 h-100">
           <img class="img-fluid img-thumbnail" src="http://placehold.it/150x150" alt="">
         </a>
+      </div> -->
+
+      <div *ngFor="let it of items" class="col-lg-3 col-md-4 col-xs-6">
+        <div class="card" style="width: 10rem;">
+          <img class="card-img-top" src="http://placehold.it/150x150" alt="Card image cap">
+          <div class="card-body">
+            <!-- <h5 class="card-title">{{it.title}}</h5> -->
+            <p class="card-text">{{it.title}}</p>
+            <h5>{{it.price}} rub.</h5>
+            <a href="#" class="btn btn-primary">Preview</a>
+          </div>
+        </div>
       </div>
+
     </div>

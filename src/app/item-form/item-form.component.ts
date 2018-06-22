@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Item } from '../model/Item'
 import { FormsModule } from '@angular/forms'
+import { ItemService } from '../item.service'
+import { Location } from '@angular/common'
 
 @Component({
   selector: 'app-item-form',
@@ -10,15 +12,16 @@ import { FormsModule } from '@angular/forms'
 export class ItemFormComponent implements OnInit {
 
   item: Item = {
-    id: 1,
-    title: '',
+    id: null,
+    title: null,
     price: null,
-    country: '',
-    category: '',
-    issueYear: null
+    country: null,
+    category: null,
+    issueYear: null,
+    published: null
   }
 
-  constructor() { }
+  constructor(private itemService: ItemService, private location: Location ) { }
 
   ngOnInit() {
   }
@@ -28,6 +31,11 @@ export class ItemFormComponent implements OnInit {
   }
 
   newItem() {    
+    this.itemService.addItem(this.item).subscribe(() => this.goBack())
+  }
+
+  goBack(): void {
+    this.location.back();
   }
 
 }

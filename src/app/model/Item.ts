@@ -1,8 +1,9 @@
 export class Item {
     id: number
     title: string
-    price: number
-    issueYear: number
-    category: string
+    price: number    
     country: string
+    category: string
+    issueYear: number
+    published: boolean
 }
