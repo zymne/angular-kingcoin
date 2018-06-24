@@ -1,9 +1,8 @@
-{{diagnostic}}
 <div>
   <form #itemForm="ngForm">
     <div class="form-group">      
       <label for="itemTitle">Название:
-        <input #title="ngModel" required name="title" class="form-control" id="itemTitle" aria-describedby="titleHelp" [(ngModel)]="item.title" placeholder="title" #spy>
+        <input #title="ngModel" required name="title" class="form-control" id="itemTitle" aria-describedby="titleHelp" [(ngModel)]="item.title" placeholder="title">
       </label>
     </div>
     <div [hidden]="title.valid || title.pristine"class="alert alert-danger">Name is required</div>
@@ -22,8 +21,8 @@
         <input name="price" class="form-control" id="itemPrice" aria-describedby="priceHelp" [(ngModel)]="item.price" placeholder="price">
       </label>
     </div>    
-    <br>TODO: remove this: {{spy.className}}
     <br>
     <button type="button" [disabled]="!itemForm.form.valid" class="btn btn-primary" (click)="newItem(); itemForm.reset()">Submit</button>
   </form>
+  <file-uploader [itemId] = "2"></file-uploader>
 </div>
