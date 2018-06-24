@@ -17,6 +17,7 @@ export class ItemFormComponent implements OnInit {
     price: null,
     country: null,
     category: null,
+    images: [],
     issueYear: null,
     published: null
   }
