@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { AppComponent } from './app.component';
 import { PageNavigatorComponent } from './page-navigator/page-navigator.component';
 import { ItemsComponent } from './items/items.component';
@@ -12,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http'
 import { FormsModule } from '@angular/forms';
 import { MessagesComponent } from './messages/messages.component';
 import { ItemDetailComponent } from './item-detail/item-detail.component';
+import { NgbdTypeaheadBasic } from './typehead-basic/typehead-basic.component';
 
 @NgModule({
   declarations: [
@@ -21,13 +23,15 @@ import { ItemDetailComponent } from './item-detail/item-detail.component';
     FileUploaderComponent,
     ItemFormComponent,
     MessagesComponent,
-    ItemDetailComponent
+    ItemDetailComponent,
+    NgbdTypeaheadBasic
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
