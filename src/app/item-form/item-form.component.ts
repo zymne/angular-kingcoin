@@ -24,6 +24,8 @@ export class ItemFormComponent implements OnInit {
     'Украина'
   ]
 
+  itemPersisted: boolean;
+
   countries: string[];
 
   item: Item = {
@@ -47,9 +49,11 @@ export class ItemFormComponent implements OnInit {
         : this.countries.filter(v => v.toLowerCase().indexOf(term.toLowerCase()) > -1).slice(0, 10))
     );
 
-  constructor(private itemService: ItemService, private countryService: CountryService, private location: Location ) { }
+  constructor(private itemService: ItemService, private countryService: CountryService, private location: Location ) { 
+    this.itemPersisted= false;
+  }
 
-  ngOnInit() {    
+  ngOnInit() {        
     this.countryService.getCountries().subscribe(c => this.refreshCountries(c))        
   }
 
@@ -69,11 +73,15 @@ export class ItemFormComponent implements OnInit {
   }
 
   newItem() {    
-    this.itemService.addItem(this.item).subscribe(() => this.goBack())
+    this.itemService.addItem(this.item).subscribe((item: Item) => this.goBack(item))
   }
 
-  goBack(): void {
-    this.location.back();
+  goBack(item: Item): void {
+    
+    if(item.id > -1)
+      this.itemPersisted = true;
+    
+    //this.location.back();
   }
 
 }

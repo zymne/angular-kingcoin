@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {Observable} from 'rxjs';
 import {debounceTime, distinctUntilChanged, map} from 'rxjs/operators';
 
@@ -17,6 +17,7 @@ const states = ['Alabama', 'Alaska', 'American Samoa', 'Arizona', 'Arkansas', 'C
   styles: ['.form-control { width: 300px; }']
 })
 export class NgbdTypeaheadBasic {
+    
   public model: any;
 
   search = (text$: Observable<string>) =>
