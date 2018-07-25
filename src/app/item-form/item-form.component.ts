@@ -1,8 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { Item } from '../model/Item'
-import { FormsModule } from '@angular/forms'
 import { ItemService } from '../item.service'
 import { Location } from '@angular/common'
+import { TabElement } from '../model/ui/TabElement'
+
+const tabs: TabElement[] = [
+  { id: 1, name: 'Create', path: '/item/create', disabled: false},
+  { id: 2, name: 'Images', path: '/item/create/uploader', disabled: true}
+  //{ id: 3, name: 'Collection', path: '/items'}
+]
 
 @Component({
   selector: 'app-item-form',
@@ -11,6 +17,12 @@ import { Location } from '@angular/common'
 })
 export class ItemFormComponent implements OnInit {
 
+  get tabs() {
+    return tabs;
+  }
+
+  selectedTab = tabs[0].name;
+    
   item: Item = {
     id: null,
     title: null,
@@ -33,6 +45,11 @@ export class ItemFormComponent implements OnInit {
 
   newItem() {    
     this.itemService.addItem(this.item).subscribe(() => this.goBack())
+  }
+
+  onTabSelected($event, tab: TabElement) {
+    if(!tab.disabled)
+      this.selectedTab = tab.name;
   }
 
   goBack(): void {

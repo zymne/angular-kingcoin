@@ -1,4 +1,14 @@
-{{diagnostic}}
+<ul class="nav nav-tabs">  
+  <li  *ngFor="let t of tabs" class="nav-item">
+    
+    <a *ngIf="!t.disabled" class="nav-link" [class.active]="selectedTab === t.name"                        
+                        (click)="onTabSelected($event, t)" 
+                        routerLink="{{t.path}}">{{t.name}}</a>
+    <a *ngIf="t.disabled" [class.disabled]="t.disabled" class="nav-link" [class.active]="selectedTab === t.name">{{t.name}}</a>
+  </li>  
+</ul>
+
+<br>
 <div>
   <form #itemForm="ngForm">
     <div class="form-group">      
@@ -26,4 +36,6 @@
     <br>
     <button type="button" [disabled]="!itemForm.form.valid" class="btn btn-primary" (click)="newItem(); itemForm.reset()">Submit</button>
   </form>
+  <br>
+  {{diagnostic}}
 </div>

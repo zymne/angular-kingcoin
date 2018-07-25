@@ -5,6 +5,7 @@ import {FileUploaderComponent} from './file-uploader/file-uploader.component'
 import { ItemsComponent } from './items/items.component';
 
 const routes: Routes = [
+  {path: '', redirectTo: 'item/create', pathMatch: 'full' },
   {path: 'item/create', component: ItemFormComponent},
   {path: 'item/create/uploader', component: FileUploaderComponent},
   {path: 'items', component: ItemsComponent}
