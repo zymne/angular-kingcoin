@@ -29,6 +29,7 @@
               "src/assets/css/jquery.ui.plupload.css"
             ],
             "scripts": [              
+              "src/assets/js/feather.min.js",
               "src/assets/js/jquery-3.3.1.js",              
               "src/assets/js/jquery-ui.min.js",
               "src/assets/js/moxie.js",

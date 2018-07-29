@@ -1,0 +1,37 @@
+<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3">
+  <h1 class="h2">Продукты</h1>
+  <div class="btn-toolbar mb-2 mb-md-0">
+    <div class="btn-group mr-2">
+      <button class="btn btn-sm btn-outline-secondary" (click)="addItem()">Добавить</button>
+      <button class="btn btn-sm btn-outline-secondary disabled">Удалить</button>
+    </div>          
+  </div>
+</div>
+<table class="table">
+  <thead>
+    <tr>
+      <th><input type="checkbox"></th>
+      <th>#</th>
+      <th>title</th>
+      <th>price</th>
+      <th>country</th>
+      <th>category</th>
+      <th>images</th>
+      <th>issueYear</th>
+      <th>published</th>          
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let it of items">
+      <td><input type="checkbox"></td>
+      <td>{{it.id}}</td>
+      <td>{{it.title}}</td>
+      <td>{{it.price}}</td>
+      <td>{{it.country.name}}</td>
+      <td>{{it.category}}</td>
+      <td>{{null}}</td>
+      <td>{{it.issueYear}}</td>
+      <td>{{it.published}}</td>
+    </tr>
+  </tbody>
+</table>

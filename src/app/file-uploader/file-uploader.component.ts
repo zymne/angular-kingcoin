@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'file-uploader',
@@ -7,12 +6,17 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./file-uploader.component.css']
 })
 export class FileUploaderComponent implements OnInit {
-  
+	
+	@Input()
+	itemId: number
+
   uploaderOptions = {
-        browse_button: 'pickfiles',
-        // General settings
+		
+		browse_button: 'pickfiles',
+		
+		// General settings
 		runtimes : 'html5,html4',
-		url : 'http://localhost:8081/upload',
+		url : '',
 	 
 		// Maximum file size
 		max_file_size : '2mb',
@@ -60,20 +64,22 @@ export class FileUploaderComponent implements OnInit {
 			 
 		    }	 		    
 		}
-}
-
-  //uploader = new plupload.Uploader(this.uploaderOptions);
-
+	}
+  
   constructor() { }
 
-  startUpload() {
-    console.log('startUpload() method called')
-    //this.uploader.start();
+	//Not used
+	startUpload() {
+		this.itemId = 1;		
+		console.log('startUpload() method called')
+		//this.uploader.start();
+		$('#image_uploader').setOption('url', 'http://localhost:8081/upload/' + this.itemId)
   }
 
   ngOnInit() {    
-    
-    $('#image_uploader').plupload(this.uploaderOptions);
+    this.uploaderOptions.url = 'http://localhost:8081/upload/' + this.itemId;
+		$('#image_uploader').plupload(this.uploaderOptions);
+		
     //this.uploader.setOption('browse_button', 'pickfiles')
     //this.uploader.setOption('container', 'image_uploader')    
     //this.uploader.init();
