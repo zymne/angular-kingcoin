@@ -49,7 +49,7 @@ export class ItemFormComponent implements OnInit {
     text$.pipe(
       debounceTime(200),
       distinctUntilChanged(),
-      map(term => term.length < 2 ? []
+      map(term => term.length < 2 || this.countries == undefined ? []
         : this.countries.filter(v => v.toLowerCase().indexOf(term.toLowerCase()) > -1).slice(0, 10))
   );
 
@@ -66,7 +66,8 @@ export class ItemFormComponent implements OnInit {
   }
 
   refreshCountries(list: string[]): void {
-    
+    if(list == undefined || list.length == 0)
+      console.log('Error getting countries.');
     this.countries = list;
     
     // $( "#itemCountry" ).autocomplete({
@@ -78,6 +79,10 @@ export class ItemFormComponent implements OnInit {
 
   newItem() {    
     this.itemService.addItem(this.item).subscribe((item: Item) => this.goBack(item))
+  }
+
+  cancelCreation(): void {
+    this.location.back();
   }
 
   onTabSelected($event, tab: TabElement) {
@@ -96,10 +101,8 @@ export class ItemFormComponent implements OnInit {
     this.selectedTab = tabs[1].name;
   }
 
-  goBack(item: Item): void {
-    
+  goBack(item: Item): void {    
     this.item = item;
-
     if(item.id > -1) {      
       this.itemPersisted = true;    
       this.showFileUploadForm()

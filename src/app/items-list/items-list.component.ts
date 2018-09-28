@@ -23,7 +23,9 @@ export class ItemsListComponent implements OnInit {
   //   }
   // ];
 
-  items: Item[];
+  items = [];
+
+  deletedRows: Number = -1;
 
   constructor(private itemService: ItemService, private router: Router) { }
 
@@ -36,8 +38,33 @@ export class ItemsListComponent implements OnInit {
     console.log('Item Added.');
   }
 
-  getItems(): void {
-    this.itemService.getItems().subscribe(items => this.items = items)
+  
+  refreshList(rowsDeleted: Number): void {
+    if(rowsDeleted > 0)
+      this.getItems();
+    console.log('Rows deleted: ' + rowsDeleted);  
   }
 
+  
+  deleteSelected(): void {
+    let selectedItems = this.items.filter(v => v.selected == true).map(v => v.data.id);
+    console.log('delete ' + selectedItems);
+
+    this.itemService.delete(selectedItems).subscribe( x => this.refreshList( x) );      
+  }
+
+  bindItems(items: Item[]): void {
+    this.items = [];
+    for(var i = 0; i < items.length; ++i) {
+      this.items[i] = { data: items[i], selected: false };
+    }
+  }
+
+  // get diagnostic() {
+  //   return JSON.stringify(this.items.filter(v => v.selected == true).map(v => v.data.id));
+  // }
+
+  getItems(): void {
+    this.itemService.getItems().subscribe(items => this.bindItems(items))
+  }
 }

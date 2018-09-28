@@ -27,7 +27,7 @@ export class ItemService {
     return this.http.get<Item[]>(this.itemsUrl).pipe(catchError(this.handleError('getItems', [])));
   }
 
-  /** GET hero by id. Will 404 if id not found */
+  /** GET item by id. Will 404 if id not found */
   getItem(id: number): Observable<Item> {
     const url = `${this.itemsUrl}/${id}`;
     return this.http.get<Item>(url).pipe(
@@ -36,7 +36,7 @@ export class ItemService {
     );
   }
 
-  /** POST: add a new hero to the server */
+  /** POST: add a new item to the server */
   addItem(item: Item): Observable<Item> {
     return this.http.post<Item>(this.itemsUrl, item, httpOptions).pipe(
       tap((item: Item) => this.log(`added item w/ id=${item.id}`)),
@@ -44,7 +44,12 @@ export class ItemService {
     );
   }
 
-  /** PUT: update the hero on the server */
+  delete(ids: String[]): Observable<Number> {
+    const url = `${this.itemsUrl}/delete`;
+    return this.http.post<Number>(url, ids, httpOptions);
+  }
+
+  /** PUT: update the item on the server */
   updateItem (item: Item): Observable<any> {
     return this.http.put(this.itemsUrl, item, httpOptions).pipe(
       tap(_ => this.log(`updated item id=${item.id}`)),
@@ -58,7 +63,7 @@ export class ItemService {
   }
 
   private log(message: string) {
-    this.messageService.add(message);
+    //this.messageService.add(message);
   }
 
   private handleError<T>(operation = 'operation', result?: T) {

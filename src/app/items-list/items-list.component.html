@@ -3,14 +3,20 @@
   <div class="btn-toolbar mb-2 mb-md-0">
     <div class="btn-group mr-2">
       <button class="btn btn-sm btn-outline-secondary" (click)="addItem()">Добавить</button>
-      <button class="btn btn-sm btn-outline-secondary disabled">Удалить</button>
+      <button class="btn btn-sm btn-outline-secondary" (click)="deleteSelected()">Удалить</button>
     </div>          
   </div>
 </div>
+
 <table class="table">
-  <thead>
+  <thead class="thead-light">
     <tr>
-      <th><input type="checkbox"></th>
+      <th>
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" id="checkAll">
+          <label class="custom-control-label" for="checkAll">&nbsp;</label>
+        </div>
+      </th>
       <th>#</th>
       <th>title</th>
       <th>price</th>
@@ -22,16 +28,21 @@
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let it of items">
-      <td><input type="checkbox"></td>
-      <td>{{it.id}}</td>
-      <td>{{it.title}}</td>
-      <td>{{it.price}}</td>
-      <td>{{it.country.name}}</td>
-      <td>{{it.category}}</td>
+    <tr *ngFor="let it of items" [class.table-danger]="it.selected">
+      <td>
+        <div class="custom-control custom-checkbox">
+          <input [(ngModel)]="it.selected" type="checkbox" class="custom-control-input" id="{{it.data.id}}">
+          <label class="custom-control-label disabled" for="{{it.data.id}}">&nbsp;</label>
+        </div>
+      </td>
+      <td>{{it.data.id}}</td>
+      <td><a routerLink="{{it.data.id}}">{{it.data.title}}</a></td>
+      <td>{{it.data.price}}</td>
+      <td>{{it.data.country.name}}</td>
+      <td>{{it.data.category}}</td>
       <td>{{null}}</td>
-      <td>{{it.issueYear}}</td>
-      <td>{{it.published}}</td>
+      <td>{{it.data.issueYear}}</td>
+      <td>{{it.data.published}}</td>
     </tr>
   </tbody>
 </table>

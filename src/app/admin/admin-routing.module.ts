@@ -5,6 +5,7 @@ import { DashboardComponent } from "./dashboard/dashboard.component";
 
 import { ItemsListComponent } from "../items-list/items-list.component";
 import { ItemFormComponent } from "../item-form/item-form.component";
+import { ItemDetailComponent } from "../item-detail/item-detail.component";
 
 
 const adminRoutes: Routes = [
@@ -12,8 +13,11 @@ const adminRoutes: Routes = [
         path: 'admin', 
         component: DashboardComponent,
         children: [
-            { path: '', component: ItemsListComponent },
-            { path: 'items/create', component: ItemFormComponent }
+            { path: '', redirectTo: 'items', pathMatch: 'full' },
+            { path: 'items', component: ItemsListComponent },
+            { path: 'items/create', component: ItemFormComponent },
+            { path: 'items/:id', component: ItemDetailComponent }
+            
         ]
     },
     { path: 'admin/items', component: ItemsListComponent}

@@ -1,4 +1,69 @@
-<p>
-  item-detail works!
-  <button class="btn default-button" (click)="save()">Save</button>
-</p>
+<div class="product">
+  <h1 class="h2">Подробная информация</h1>
+ 
+  <ng-template #modalContent let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form>
+        <div class="form-group">
+          <label for="dateOfBirth">Date of birth</label>
+          <div class="input-group">
+            <input id="dateOfBirth" class="form-control" placeholder="yyyy-mm-dd" name="dp" ngbDatepicker #dp="ngbDatepicker">
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary" (click)="dp.toggle()" type="button">
+                <img src="img/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;"/>
+              </button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="c('Save click')">Save</button>
+    </div>
+  </ng-template>
+  <!-- Left side - Images -->
+  <!-- TODO: Отображать пустые thumbnails до тех пор пока не придет реальная информация с сервера. 
+  Делать это предварительно расчитав все области, чтобы они не сдвигались после того как будет выполнена реальная загрузка изображений -->
+  <figure *ngIf="item.id !== null" style="width: 48%; float: left;">  
+    
+    <div class="product-gallery" style="float: left;">
+        <img src="http://localhost:8081/{{item.images[0]}}" style="width: 100%; height: auto; max-width: 600px; padding: 2.5rem 25%">
+    </div>
+    
+    <!-- Thumbnails -->
+    <!-- TODO: Выяснить будет ли повторное обращение к серверу для загрузки картинки, если мы передадим этот же url в модальный диалог  -->
+    <div (click)="open(modalContent)" class="product-gallery" style="width: 23%; margin-left: 1%; margin-right: 1%; display: inline-block">
+        <img src="http://localhost:8081/{{item.images[1]}}" style="width: 100%; height: auto; max-width: 100px;">
+    </div>
+    <div class="product-gallery" style="width: 23%; margin-left: 1%; margin-right: 1%; display: inline-block">
+        <img src="http://localhost:8081/{{item.images[1]}}" style="width: 100%; height: auto; max-width: 100px;">
+    </div>
+    <div class="product-gallery" style="width: 23%; margin-left: 1%; margin-right: 1%; display: inline-block">
+        <img src="http://localhost:8081/{{item.images[1]}}" style="width: 100%; height: auto; max-width: 100px;">
+    </div>
+    <div class="product-gallery" style="width: 23%; margin-left: 1%; margin-right: 1%; display: inline-block">
+        <img src="http://localhost:8081/{{item.images[1]}}" style="width: 100%; height: auto; max-width: 100px;">
+    </div>
+  </figure>
+
+
+
+  <!-- Right side - General Info -->
+  <div class="product-summary" style="width: 48%; float: right; clear: none;">
+    {{item.title}}
+  </div>
+
+  <div class="clearfix"></div>
+  
+  <br>
+  <div style="display: block;">
+      <button class="btn btn-primary" style="width: 100px" (click)="save()">Back</button>
+  </div>
+  
+</div>
