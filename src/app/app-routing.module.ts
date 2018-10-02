@@ -1,14 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ItemFormComponent } from './item-form/item-form.component'
-import { FileUploaderComponent } from './file-uploader/file-uploader.component'
 import { ItemsComponent } from './items/items.component';
-import { ItemsListComponent } from './items-list/items-list.component'
+import { ItemDetailComponent } from './item-detail/item-detail.component';
 
-const routes: Routes = [
-  // {path: '', redirectTo: 'item/create', pathMatch: 'full' },
+const routes: Routes = [  
   {path: '', redirectTo: 'items', pathMatch: 'full' },  
-  {path: 'items', component: ItemsComponent}
+  {path: 'items', component: ItemsComponent},
+  {path: 'items/:id', component: ItemDetailComponent }
 ];
 
 @NgModule({
