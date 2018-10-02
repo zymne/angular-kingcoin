@@ -14,7 +14,8 @@
       <div *ngFor="let it of items" class="col-lg-4 col-md-5 col-xs-4">
         <div clas="card" style="width: 22rem; padding: 1.5rem">
                     
-          <img class="card-img-top mx-auto d-block" src="http://placehold.it/150x150" alt="Card image cap" style="width: 200px;">
+          <!--TODO: проверить на наличие картинки в индексе 0, иначе вывести placeholder -->
+          <img class="card-img-top mx-auto d-block" src="http://localhost:8081/{{it.images[0]}}" alt="Card image cap" style="width: 200px;">
           
           <div class="card-body">
             <!-- <h5 class="card-title">{{it.title}}</h5> -->

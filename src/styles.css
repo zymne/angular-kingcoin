@@ -1,1 +1,45 @@
 /* You can add global styles to this file, and also import other style files */
+
+@media(min-width: 576px) {
+    .items-image .modal-dialog  {
+        max-width: 500px;
+    }
+}
+
+@media(min-width: 1024px) {
+    .items-image .modal-dialog  {
+        max-width: 1024px;
+        height: auto;
+    }
+
+    .items-image .modal-dialog .modal-content {
+        height: 100%;
+        display: block;
+    }
+
+    .items-image .modal-dialog img {
+        margin: 0;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);        
+    }
+}
+    
+
+.items-image .modal-dialog {
+    /*max-width: 800px;*/
+    position: fixed;
+    left: 20px;
+    top: 50px;
+    right: 20px;
+    bottom: 50px;
+}
+
+.items-image .modal-dialog .modal-content {
+    display: block;
+}
+
+.items-image .modal-dialog img {
+    max-width: 100%;
+}

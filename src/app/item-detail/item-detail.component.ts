@@ -35,8 +35,11 @@ export class ItemDetailComponent implements OnInit {
   //   console.log('open modal');
   // }
 
-  open(content) {
-    this.modalService.open(content, {});
+  //TODO: not sure about image vertical align inside modal dialog - see the global style.css
+  open(index:number) {
+    const srcText = "http://localhost:8081/" + this.item.images[index];
+    const imageContent = '<img src="' + srcText + '">';
+    this.modalService.open(srcText, { windowClass: "items-image"});
   }
 
   ngOnInit() {

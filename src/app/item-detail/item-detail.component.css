@@ -3,3 +3,12 @@
     clear: both;
     display: block;
 }
+
+.itemsImage {
+    background: green;
+    max-width: 600px;
+}
+
+.modal-dialog {
+    max-width: 600px;
+}
