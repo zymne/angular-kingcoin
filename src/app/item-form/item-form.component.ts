@@ -33,6 +33,7 @@ export class ItemFormComponent implements OnInit {
   item: Item = {
     id: null,
     title: null,
+    description: null,
     price: null,
     country: null,
     category: null,

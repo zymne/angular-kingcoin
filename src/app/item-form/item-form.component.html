@@ -20,35 +20,26 @@
 <!-- Item Form -->
 <br>
 <div *ngIf="!isPersisted()">
-  <form #itemForm="ngForm">
+  
+  <form #itemForm="ngForm" style="width: 50%;">
+    
     <div class="form-group">      
-      <label for="itemTitle">Название:
-        <input #title="ngModel" required name="title" class="form-control" id="itemTitle" aria-describedby="titleHelp" [(ngModel)]="item.title" placeholder="title">
-      </label>
+      <label for="itemTitle">Название:</label>
+      <input #title="ngModel" required name="title" class="form-control" id="itemTitle" aria-describedby="titleHelp" [(ngModel)]="item.title" placeholder="title">      
     </div>
     <div [hidden]="title.valid || title.pristine"class="alert alert-danger">Name is required</div>
+    
     <div class="form-group">      
-      <label for="itemCountry">Страна:
-        <input class="form-control" name="country" id="itemCountry" aria-describedby="countryHelp" [(ngModel)]="item.country" [ngbTypeahead]="search" placeholder="country">
-      </label>
+      <label for="itemCountry">Страна:</label>
+      <input class="form-control" name="country" id="itemCountry" aria-describedby="countryHelp" [(ngModel)]="item.country" [ngbTypeahead]="search" placeholder="country">      
     </div>
 
-    <div class="form-group" style="width: 200px;">
-      <label for="issue-date-calendar">Год выпуска:
-        <input class="form-control" minlength="4" maxlength="4" name="issueYear" id="itemIssueYear" aria-describedby="issueYearHelp" [(ngModel)]="item.issueYear" placeholder="issueYear">
-        <!-- <div class="input-group">
-          <input id="issue-date-calendar" class="form-control" placeholder="yyyy-mm-dd"
-                  name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker">
-          <div class="input-group-append">
-            <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button">
-              <img src="assets/img/calendar-icon.svg" style="width: 1.2rem; height: 1rem; cursor: pointer;"/>
-            </button>
-          </div>
-        </div> -->
-      </label>
+    <div class="form-group">
+      <label for="issue-date-calendar">Год выпуска:</label>
+        <input class="form-control" minlength="4" maxlength="4" name="issueYear" id="itemIssueYear" aria-describedby="issueYearHelp" [(ngModel)]="item.issueYear" placeholder="issueYear">      
     </div>
 
-    <div class="form-group" style="width: 200px;">
+    <div class="form-group">
       <label for="itemCategory">Категория:</label>
       <select class="form-control"  id="itemCategory"
               required
@@ -60,10 +51,15 @@
     </div>
 
     <div class="form-group">      
-      <label for="itemPrice">Цена:
-        <input name="price" class="form-control" id="itemPrice" aria-describedby="priceHelp" [(ngModel)]="item.price" placeholder="price">
-      </label>
+      <label for="itemPrice">Цена:</label>
+      <input name="price" class="form-control" id="itemPrice" aria-describedby="priceHelp" [(ngModel)]="item.price" placeholder="price">      
     </div>    
+    
+    <div class="form-group">      
+      <label for="itemDescription">Описание:</label>        
+      <textarea class="form-control rounded-0" name="description" id="itemDescription" rows="10" [(ngModel)]="item.description" placeholder="description"></textarea>      
+    </div>
+    
     <br>
     <button type="button" [disabled]="!itemForm.form.valid" class="btn btn-primary" (click)="newItem()">Submit</button>
     

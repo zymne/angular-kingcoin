@@ -16,9 +16,9 @@ export class ItemService {
 
   private itemsUrl ='http://localhost:8081/items';
 
-  ITEMS: Item[] = [
-    {id: 1, title:'100 rub', category:'banknotes', price:150, country: { code: 'RU', name: 'Russia'}, images: [], issueYear:2018, published: true},
-    {id: 2, title:'200 rub', category:'banknotes', price:250, country: { code: 'RU', name: 'Russia'}, images: [], issueYear:2018, published: true}
+  ITEMS: Item[] = [ 
+    // {id: 1, title:'100 rub', category:'banknotes', price:150, country: { code: 'RU', name: 'Russia'}, images: [], issueYear:2018, published: true},
+    // {id: 2, title:'200 rub', category:'banknotes', price:250, country: { code: 'RU', name: 'Russia'}, images: [], issueYear:2018, published: true}
 ];
 
   getItems(): Observable<Item[]> {    
